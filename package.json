@@ -1,5 +1,5 @@
 {
-  "name": "angular-webworker-example",
+  "name": "angular-web-worker",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
