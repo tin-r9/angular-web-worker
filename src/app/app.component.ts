@@ -13,19 +13,19 @@ export class AppComponent implements OnInit {
   protected imagePreview!: ElementRef<HTMLCanvasElement>;
 
   private imagePreviewCtx!: CanvasRenderingContext2D | null;
-  private worker!: Worker;
+  // private worker!: Worker;
 
   ngOnInit() {
     this.imagePreviewCtx = this.imagePreview.nativeElement.getContext('2d');
-    this.worker = new Worker(new URL('./image-filter.worker', import.meta.url));
-    this.worker.onmessage = ({ data: processedImage }) => {
-      this.imagePreviewCtx?.putImageData(processedImage, 0, 0);
-    };
+    // this.worker = new Worker(new URL('./image-filter.worker', import.meta.url));
+    // this.worker.onmessage = ({ data: processedImage }) => {
+    //   this.imagePreviewCtx?.putImageData(processedImage, 0, 0);
+    // };
   }
 
-  ngOnDestroy() {
-    this.worker.terminate();
-  }
+  // ngOnDestroy() {
+  //   this.worker.terminate();
+  // }
 
   loadImage(e: Event) {
     const image = (e.target as HTMLInputElement).files![0];
@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
     const { width, height } = this.imagePreview.nativeElement;
     const imageData = this.imagePreviewCtx?.getImageData(0, 0, width, height);
     if (imageData) {
-      this.worker.postMessage(imageData);
+      // this.worker.postMessage(imageData);
       const processedImage = crazyExpensiveImgFilter(imageData);
       this.imagePreviewCtx?.putImageData(processedImage, 0, 0);
     }
