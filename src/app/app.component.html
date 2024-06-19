@@ -1,0 +1,9 @@
+<header>
+  <img width="50" src="../assets/angular-logo.png" alt="Angular MVD" />
+  <button (click)="applyFilter()">Apply Filter</button>
+</header>
+<main>
+  <input type="file" (change)="loadImage($event)" value="Select File" />
+
+  <canvas #imagePreview></canvas>
+</main>
